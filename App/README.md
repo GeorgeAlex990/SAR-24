@@ -9,7 +9,7 @@ It holds all the functionality that the robot have.
 #### Driving Screen:
 
 1.  Switch to Operational Screen
-2.  Turn on the siren
+2.  Toggle the siren
 3.  Use the Horn on-board
 
 ![image info](Images/OP_SCREEN.png)
