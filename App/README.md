@@ -5,4 +5,4 @@ It holds all the functionality that the robot have.
 
 ## Functionalities:
 
-![image info](./Images/DRV_SCEEN.png)
+![image info](Images/DRV_SCEEN.png)
