@@ -44,8 +44,6 @@ const char index_html[] PROGMEM = R"rawliteral(
 </head>
 <body>
   <h2>SAR-24 Master Control</h2>
-  <input type="range" min="0" max="1023" value="512" class="slider" id="slider">
-  <p>Value: <span id="sliderValue">512</span></p>
   <div id="buttonContainer">
     <button id="1" class="button">FORWARD</button>
     <br>
@@ -64,6 +62,15 @@ const char index_html[] PROGMEM = R"rawliteral(
     <button id="9" class="button">CAM RIGHT</button>
     <br>
     <button id="10" class="button">CAM CENTER</button>
+    <br>
+    <br>
+    <button id="11" class="button">SIREN</button>
+    <button id="12" class="button">HIGH</button>
+    <button id="13" class="button">LOW</button>
+    <br>
+    <button id="14" class="button">??</button>
+    <button id="15" class="button">PAUSE</button>
+  
   </div>
 
 <script>
@@ -74,14 +81,6 @@ document.querySelectorAll('.button').forEach(button => {
   button.addEventListener('touchend', function() {
     pushButton(this, 0);
   });
-});
-
-document.getElementById('slider').addEventListener('input', function() {
-  var value = this.value;
-  document.getElementById('sliderValue').textContent = value;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "/update?output=13&state=" + value, true);
-  xhr.send();
 });
 
 function pushButton(button, state) {
@@ -206,7 +205,32 @@ void setup(){
       if (output == 5 && state == 0) {
         HONK_END();
       }
-      if (output == 1 && state == 0 || output == 2 && state == 0 || output == 3 && state == 0 || output == 4 && state == 0) {
+      if (output == 11 && state == 1) {
+        Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
+        Wire.write("Q");  /* sends command */
+        Wire.endTransmission();    /* stop transmitting */
+        Serial.println("SIREN");
+      }
+      if (output == 12 && state == 1) {
+        Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
+        Wire.write("H");  /* sends command */
+        Wire.endTransmission();    /* stop transmitting */
+        Serial.println("HIGH");
+      }
+      if (output == 13 && state == 1) {
+        Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
+        Wire.write("L");  /* sends command */
+        Wire.endTransmission();    /* stop transmitting */
+        Serial.println("LOW");
+      }
+      if (output == 14 && state == 1) {
+        Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
+        Wire.write("?");  /* sends command */
+        Wire.endTransmission();    /* stop transmitting */
+        Serial.println("??");
+      }
+      
+      if (output == 1 && state == 0 || output == 2 && state == 0 || output == 3 && state == 0 || output == 4 && state == 0 ) {
         Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
         Wire.write("P");  /* sends command */
         Wire.endTransmission();    /* stop transmitting */
