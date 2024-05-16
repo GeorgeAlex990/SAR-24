@@ -229,6 +229,12 @@ void setup(){
         Wire.endTransmission();    /* stop transmitting */
         Serial.println("??");
       }
+      if (output == 15 && state == 1) {
+        Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
+        Wire.write("T");  /* sends command */
+        Wire.endTransmission();    /* stop transmitting */
+        Serial.println("PAUSE");
+      }
       
       if (output == 1 && state == 0 || output == 2 && state == 0 || output == 3 && state == 0 || output == 4 && state == 0 ) {
         Wire.beginTransmission(Arduino_motors); /* begin with device address 8 */
