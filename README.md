@@ -14,6 +14,11 @@
 
 **Utilizarea SAR-24 în misiune:** Un astfel de robot este ideal pentru misiuni în situații precum dezastre naturale, prăbușiri de clădiri sau alte incidente care pun viața în pericol și necesită intervenție imedată; Abililitățile robotului ajută echipele de salvare să salveze mai rapid și mai ușor.
 
+**Cerințe sistem:** 
+
+  - Wi-Fi
+  - sistem de operare Android
+
 **Specificații:**
 
 - Plăcuțe de dezvoltare: **Arduino Pro Mini**( control motoare și cameră), **Esp8266 D1 Mini**(master cu webserver și control ochi), **Esp32 Cam**( camera robotului);
